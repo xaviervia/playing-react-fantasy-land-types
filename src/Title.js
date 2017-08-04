@@ -3,5 +3,5 @@ import { setDisplayName } from 'recompose'
 
 export default H1.contramap(({ hovered, ...props }) => ({
   style: { color: hovered ? 'red' : 'black' },
-  ...props,
+  ...props
 })).map(setDisplayName('Title'))

@@ -7,5 +7,5 @@ const Title = H2.contramap(compose(objOf('children'), prop('title')))
 const Content = P.contramap(compose(objOf('children'), prop('content')))
 
 export default Article.contramap(omit(['title', 'content']))
-  .children(Title.concat(Content))
+  .children(() => Title.concat(Content))
   .map(setDisplayName('Article'))

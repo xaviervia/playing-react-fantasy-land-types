@@ -26,16 +26,20 @@
   },
   "homepage": "https://gist.github.com/cc55e5a8ffa92862cb159a69f116fc48",
   "devDependencies": {
-    "prettier": "^1.5.3",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
     "sagui": "^11.0.2"
   },
   "dependencies": {
     "@hocs/omit-props": "^0.1.0",
     "@klarna/higher-order-components": "^3.0.1",
     "ramda": "^0.24.1",
-    "react": "^16",
+    "react": "^16.0.0-beta.3",
     "react-context-props": "^2.2.0",
-    "react-dom": "^16",
+    "react-dom": "^16.0.0-beta.3",
     "recompose": "^0.24.0"
   }
 }

@@ -4,16 +4,19 @@ import { withHoverProps } from '@klarna/higher-order-components'
 import Title from './Title'
 import Tagline from './Tagline'
 
-const Header = Title.contramap(({ title, ...props }) => ({
-  children: title,
-  ...props,
-}))
+const Header = Title
+  .contramap(({ title, ...props }) => ({
+    children: title,
+    ...props
+  }))
   .contramap(omit(['tagline']))
   .concat(
-    Tagline.contramap(({ tagline, ...props }) => ({
-      children: tagline,
-      ...props,
-    })).contramap(omit(['title']))
+    Tagline
+      .contramap(({ tagline, ...props }) => ({
+        children: tagline,
+        ...props
+      }))
+      .contramap(omit(['title']))
   )
 
 export default Header.promap(
