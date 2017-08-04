@@ -1,10 +1,12 @@
-import { compose } from 'recompose'
 import createElementWithProps from './createElementWithProps'
 
 const ReactComponent = Target => ({
   Target,
   map: hoc => ReactComponent(hoc(Target)),
-  contramap: f => ReactComponent(compose(Target, f)),
+  contramap: propsPreprocessor =>
+    ReactComponent(props => createElementWithProps(propsPreprocessor(props))(Target)),
+  promap: (propsPreprocessor, hoc) =>
+    ReactComponent(hoc(props => createElementWithProps(propsPreprocessor(props))(Target))),
   concat: y =>
     ReactComponent(props => [
       createElementWithProps({ key: 0, ...props })(Target),
@@ -12,7 +14,8 @@ const ReactComponent = Target => ({
     ]),
   fold: f => f(Target),
   chain: f => f(Target),
-  ap: t => ReactComponent(t.fold(Target)),
 })
+
+ReactComponent.of = x => ({ ap: t => ReactComponent(t.fold(x)) })
 
 export default ReactComponent
