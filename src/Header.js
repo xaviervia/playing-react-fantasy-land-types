@@ -1,3 +1,4 @@
+import ReactComponent from './ReactComponent'
 import { setDisplayName } from 'recompose'
 import { omit } from 'ramda'
 import { withHoverProps } from '@klarna/higher-order-components'
@@ -10,11 +11,13 @@ const Header = Title.contramap(omit(['tagline']))
     ...props,
   }))
   .concat(
-    Tagline.contramap(omit(['tagline'])).contramap(({ title, tagline, ...props }) => ({
+    Tagline.contramap(omit(['tagline'])).contramap(({ tagline, ...props }) => ({
       children: tagline,
       ...props,
     }))
   )
   .contramap(omit(['articles']))
 
-export default Header.map(withHoverProps({ hovered: true })).map(setDisplayName('Header'))
+export default ReactComponent(withHoverProps({ hovered: true }))
+  .ap(Header)
+  .map(setDisplayName('Header'))

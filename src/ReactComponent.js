@@ -12,6 +12,7 @@ const ReactComponent = Target => ({
     ]),
   fold: f => f(Target),
   chain: f => f(Target),
+  ap: t => ReactComponent(t.fold(Target)),
 })
 
 export default ReactComponent
