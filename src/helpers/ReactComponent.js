@@ -9,11 +9,15 @@ const ReactComponent = Target => ({
     ReactComponent(hoc(props => createElementWithProps(propsPreprocessor(props))(Target))),
   concat: y =>
     ReactComponent(props => [
-      createElementWithProps({ key: 0, ...props })(Target),
-      y.fold(createElementWithProps({ key: 1, ...props })),
+      createElementWithProps({ ...props, key: 0 })(Target),
+      y.fold(createElementWithProps({ ...props, key: 1 })),
     ]),
   fold: f => f(Target),
   chain: f => f(Target),
+  children: c =>
+    ReactComponent(props =>
+      createElementWithProps({ children: c.fold(createElementWithProps(props)), ...props })(Target)
+    ),
 })
 
 ReactComponent.of = x => ({ ap: t => ReactComponent(t.fold(x)) })

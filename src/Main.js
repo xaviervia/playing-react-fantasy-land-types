@@ -1,6 +1,8 @@
+import ReactComponent from './helpers/ReactComponent'
 import { Main, Section } from './helpers/primitives'
-import { compose, pick, prop, objOf, map } from 'ramda'
-import render from './helpers/render'
+import fold from './helpers/fold'
+import { always, concat, compose, prop, objOf, omit, map, reduce } from 'ramda'
+import createElementWithProps from './helpers/createElementWithProps'
 import { setDisplayName } from 'recompose'
 import Article from './Article'
 import Header from './Header'
@@ -8,14 +10,13 @@ import Header from './Header'
 const Blogroll = Section.contramap(
   compose(
     objOf('children'),
-    map(compose((article, index) => ({ key: index, ...article }), render(Article))),
+    fold(createElementWithProps({})),
+    reduce(concat, ReactComponent.empty()),
+    map(article => Article.contramap(always(article))),
     prop('articles')
   )
 )
 
-export default Main.contramap(pick(['children']))
-  .contramap(props => ({
-    children: render(Header.concat(Blogroll))(props),
-    ...props,
-  }))
+export default Main.contramap(omit(['articles', 'tagline']))
+  .children(Header.concat(Blogroll))
   .map(setDisplayName('Main'))
