@@ -1,10 +1,10 @@
 import { render } from 'react-dom'
 import Main from './Main'
-import createElement from './createElement'
+import createElementWithProps from './helpers/createElementWithProps'
 
 render(
   Main.fold(
-    createElement({
+    createElementWithProps({
       title: 'Hello',
       tagline: 'World of Fantasy Land',
       articles: [

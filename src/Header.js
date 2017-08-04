@@ -1,4 +1,4 @@
-import ReactComponent from './ReactComponent'
+import ReactComponent from './helpers/ReactComponent'
 import { setDisplayName } from 'recompose'
 import { omit } from 'ramda'
 import { withHoverProps } from '@klarna/higher-order-components'

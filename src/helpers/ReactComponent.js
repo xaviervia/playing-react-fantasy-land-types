@@ -1,5 +1,5 @@
 import { compose } from 'recompose'
-import createElement from './createElement'
+import createElementWithProps from './createElementWithProps'
 
 const ReactComponent = Target => ({
   Target,
@@ -7,8 +7,8 @@ const ReactComponent = Target => ({
   contramap: f => ReactComponent(compose(Target, f)),
   concat: y =>
     ReactComponent(props => [
-      createElement({ key: 0, ...props })(Target),
-      y.fold(createElement({ key: 1, ...props })),
+      createElementWithProps({ key: 0, ...props })(Target),
+      y.fold(createElementWithProps({ key: 1, ...props })),
     ]),
   fold: f => f(Target),
   chain: f => f(Target),
