@@ -18,4 +18,6 @@ const ReactComponent = Target => ({
 
 ReactComponent.of = x => ({ ap: t => ReactComponent(t.fold(x)) })
 
+ReactComponent.empty = () => ReactComponent(() => false)
+
 export default ReactComponent
