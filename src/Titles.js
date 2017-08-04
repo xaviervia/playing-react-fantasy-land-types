@@ -1,14 +1,13 @@
 import { compose, prop, objOf } from 'ramda'
-import { setDisplayName } from 'recompose'
 import { H1, H2 } from './helpers/primitives'
 
 export const Title = H1
   .contramap(compose(objOf('children'), prop('title')))
-  .map(setDisplayName('Title'))
+  .name('Title')
 
 export const Subtitle = H2
   .contramap(compose(objOf('children'), prop('subtitle')))
-  .map(setDisplayName('Subtitle'))
+  .name('Subtitle')
 
 export default Title.concat(Subtitle)
 

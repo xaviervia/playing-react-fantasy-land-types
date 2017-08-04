@@ -1,7 +1,7 @@
 import { P } from './helpers/primitives'
-import { setDisplayName } from 'recompose'
+import { omit } from 'ramda'
 
-export default P.contramap(({ hovered, ...props }) => ({
-  style: { color: hovered ? 'red' : 'black' },
-  ...props
-})).map(setDisplayName('Tagline'))
+export default P
+  .contramap(omit(['hovered']))
+  .style(({ hovered }) => ({ color: hovered ? 'red' : 'black' }))
+  .name('Tagline')

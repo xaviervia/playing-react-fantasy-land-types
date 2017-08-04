@@ -1,25 +1,20 @@
-import { setDisplayName } from 'recompose'
+import { of } from './helpers/ReactComponent'
 import { compose, omit } from 'ramda'
 import { withHoverProps } from '@klarna/higher-order-components'
+import { listOf } from './helpers/combinators'
 import Title from './Title'
 import Tagline from './Tagline'
 
-const Header = Title
-  .contramap(({ title, ...props }) => ({
-    children: title,
-    ...props
+const Header = of(listOf(2))
+  .ap(Title)
+  .ap(Tagline)
+  .contramap(({ title, tagline, ...props }) => ({
+    items: [
+      { children: title, ...props },
+      { children: tagline, ...props }
+    ]
   }))
-  .contramap(omit(['tagline']))
-  .concat(
-    Tagline
-      .contramap(({ tagline, ...props }) => ({
-        children: tagline,
-        ...props
-      }))
-      .contramap(omit(['title']))
-  )
+  .name('Header')
+  .map(withHoverProps({hovered: true}))
 
-export default Header.promap(
-  omit(['articles']),
-  compose(setDisplayName('Header'), withHoverProps({ hovered: true }))
-)
+export default Header

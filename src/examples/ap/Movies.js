@@ -8,11 +8,13 @@ const mapChildren = Item => Wrapper => ({items, wrapper}) =>
     {items.map((item, index) => <Item key={index} {...item} />)}
   </Wrapper>
 
-const Title = of(setDisplayName('Title'))
-  .ap(Li)
+const Title = Li
+  .style(props => ({ listStyleType: 'square' }))
+  .name('Title')
 
-const TitleList = of(setDisplayName('TitleList'))
-  .ap(Ul)
+const TitleList = Ul
+  .style(props => ({ fontFamily: 'sans-serif' }))
+  .name('TitleList')
 
 export default of(mapChildren)
   .ap(Title)
@@ -21,4 +23,4 @@ export default of(mapChildren)
     items: movies.map(movie => ({children: movie})),
     wrapper: {}
   }))
-  .map(setDisplayName('Movies'))
+  .name('Movies')
