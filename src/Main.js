@@ -1,5 +1,5 @@
 import { of } from './helpers/ReactComponent'
-import { twoChildren, nChildren } from './helpers/combinators'
+import { nChildren, listOf, withChildren, withChild } from './helpers/combinators'
 import { Main, Section } from './helpers/primitives'
 import { always, concat, compose, prop, omit, map, reduce } from 'ramda'
 import { setDisplayName } from 'recompose'
@@ -15,12 +15,13 @@ const Blogroll = of(nChildren)
   }))
   .name('Blogroll')
 
-export default of(twoChildren)
-  .ap(Header)
-  .ap(Blogroll)
-  .ap(Main)
+export default withChildren(Header, Blogroll)(Main)
   .contramap(({ title, tagline, articles }) => ({
-    north: { title, tagline },
-    south: { articles }
+    child: {
+      items: [
+        { title, tagline },
+        { articles }
+      ]
+    }
   }))
   .name('Main')

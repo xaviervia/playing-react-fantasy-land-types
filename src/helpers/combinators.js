@@ -1,5 +1,6 @@
 import React from 'react'
-import { curryN } from 'ramda'
+import { curryN, reduce } from 'ramda'
+import { of } from './ReactComponent'
 
 export const withChild = Child => Parent => ({child, parent}) =>
   <Parent {...parent}>
@@ -23,3 +24,14 @@ export const listOf = n => curryN(n, (...Items) => ({items}) =>
 
     return <Item key={index} {...item} />
   }))
+
+export const withChildren = (...Children) => Parent =>
+  of(withChild)
+  .ap(
+    reduce(
+      (acc, Child) => acc.ap(Child),
+      of(listOf(Children.length)),
+      Children
+    )
+  )
+  .ap(Parent)
