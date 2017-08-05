@@ -1,5 +1,7 @@
 # playing-react-fantasy-land-types
 
+**Update**: The type used here is now published in [react-dream](https://github.com/xaviervia/react-dream)
+
 To try is out:
 
 ```
