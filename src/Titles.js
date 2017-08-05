@@ -1,11 +1,11 @@
 import { compose, prop, objOf } from 'ramda'
-import { H1, H2 } from './helpers/primitives'
+import { Html } from 'react-dream'
 
-export const Title = H1
+export const Title = Html.H1
   .contramap(compose(objOf('children'), prop('title')))
   .name('Title')
 
-export const Subtitle = H2
+export const Subtitle = Html.H2
   .contramap(compose(objOf('children'), prop('subtitle')))
   .name('Subtitle')
 

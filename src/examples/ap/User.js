@@ -1,7 +1,6 @@
 import React from 'react'
-import { of } from '../../helpers/ReactComponent'
+import { Html, of } from 'react-dream'
 import { setDisplayName } from 'recompose'
-import { Dt, Dl, Dd } from '../../helpers/primitives'
 
 const twoChildren = North => South => Wrapper => ({north, south, wrapper}) =>
   <Wrapper {...wrapper}>
@@ -10,15 +9,15 @@ const twoChildren = North => South => Wrapper => ({north, south, wrapper}) =>
   </Wrapper>
 
 const Name = of(setDisplayName('Name'))
-  .ap(Dt)
+  .ap(Html.Dt)
 
 const CharacterClass = of(setDisplayName('CharacterClass'))
-  .ap(Dd)
+  .ap(Html.Dd)
 
 export default of(twoChildren)
   .ap(Name)
   .ap(CharacterClass)
-  .ap(Dl)
+  .ap(Html.Dl)
   .contramap(({name, characterClass}) => ({
     north: {children: name},
     south: {children: characterClass}

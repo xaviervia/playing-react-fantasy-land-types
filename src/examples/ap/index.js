@@ -1,5 +1,5 @@
 import { render } from 'react-dom'
-import createElementWithProps from '../../helpers/createElementWithProps'
+import { createElementWithProps } from 'react-dream'
 import Movies from './Movies'
 
 render(

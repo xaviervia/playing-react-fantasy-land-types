@@ -1,4 +1,4 @@
-import { of } from './helpers/ReactComponent'
+import { of } from 'react-dream'
 import { compose, omit } from 'ramda'
 import { withHoverProps } from '@klarna/higher-order-components'
 import { listOf } from './helpers/combinators'

@@ -5217,7 +5217,7 @@ react-context-props@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/react-context-props/-/react-context-props-2.2.0.tgz#1f0bd558b337482c7e437a13699acf7938bca18c"
 
-react-dom@^16:
+react-dom@^16.0.0-beta.3:
   version "16.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.0.0-beta.3.tgz#6b662e8db127d14565b98799c13532044c7768b9"
   dependencies:
@@ -5226,7 +5226,11 @@ react-dom@^16:
     object-assign "^4.1.0"
     prop-types "^15.5.6"
 
-react@^16:
+react-dream@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/react-dream/-/react-dream-0.0.4.tgz#6d57619330afcebc1cef8b43f332c06a5710dd3d"
+
+react@^16.0.0-beta.3:
   version "16.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/react/-/react-16.0.0-beta.3.tgz#f3974ce09dfef8e7debaba87c063a35aa09878a4"
   dependencies:

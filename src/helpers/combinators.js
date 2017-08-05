@@ -1,6 +1,6 @@
 import React from 'react'
 import { curryN, reduce } from 'ramda'
-import { of } from './ReactComponent'
+import { of } from 'react-dream'
 
 export const withChild = Child => Parent => ({child, parent}) =>
   <Parent {...parent}>

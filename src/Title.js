@@ -1,7 +1,7 @@
 import { omit } from 'ramda'
-import { H1 } from './helpers/primitives'
+import { Html } from 'react-dream'
 
-export default H1
+export default Html.H1
   .contramap(omit(['hovered']))
   .style(({ hovered }) => ({ color: hovered ? 'red' : 'black' }))
   .name('Title')
